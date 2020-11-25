@@ -1,0 +1,13 @@
+name: sensucli
+title: Sensu sensucli
+maintainer: Sensu Inc.
+copyright: Sensu Inc.
+copyright_email: support@sensu.io
+license: Apache-2.0
+summary: Verify CLI (sensuctl) is properly configured and functional
+version: 1.0.0
+supports:
+  - platform-family: linux
+inputs:
+  - name: cli_version
+    value: '6.0'

@@ -1,0 +1,37 @@
+---
+# username and sshkey are optional. If you omit username, $USER will be used
+# instead. If you omit the sshkey you may specify your password in the
+# environment variable INSPEC_PASSWORD.
+backend:
+  targets:
+    - 127.0.0.1:2203
+  profiles:
+    - backend
+    - etcd
+    - sensucli
+  username: vagrant
+  sshkey: /sshkey
+gateway:
+  targets:
+    - 127.0.0.1:2203
+  profiles:
+    - gateway
+    - sensucli
+  username: vagrant
+  sshkey: /sshkey
+db:
+  targets:
+    - 127.0.0.1:2222
+    - 127.0.0.1:2200
+    - 127.0.0.1:2201
+  profiles:
+    - postgres
+  username: vagrant
+  sshkey: /sshkey
+agent:
+  targets:
+    - 127.0.0.1:2203
+  profiles:
+    - agent
+  username: vagrant
+  sshkey: /sshkey

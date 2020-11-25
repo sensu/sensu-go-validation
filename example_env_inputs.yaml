@@ -1,0 +1,34 @@
+---
+# Default values can be found in the profiles/$profile_name/inspec.yml. You
+# must specify a third argument to rake with the path to the inputs file for
+# this to be loaded and override the default values.
+
+### backend / gateway:
+#no-embed-etcd:
+#backend_webui_port:
+#backend_api_port:
+#backend_agent_api_port:
+#backend_version:
+#federation:
+
+### agent:
+#agent_socket_port:
+#agent_api_port:
+#agent_version:
+
+### etcd:
+#etcd_client_port:
+#etcd_peer_port:
+
+### postgres:
+#postgres_port:
+#patroni_port:
+#number_patroni_nodes:
+
+### cli:
+#cli_version:
+
+### end_to_end:
+#backend_regex:
+#db_regex:
+#end_to_end_check:

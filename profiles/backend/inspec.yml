@@ -1,0 +1,21 @@
+name: backend
+title: Sensu Backend
+maintainer: Sensu Inc.
+copyright: Sensu Inc.
+copyright_email: support@sensu.io
+license: Apache-2.0
+summary: Verify Sensu Backend is properly configured and functional
+version: 1.0.0
+supports:
+  - platform-family: linux
+inputs:
+  - name: no-embed-etcd
+    value: 'true'
+  - name: backend_webui_port
+    value: 3000
+  - name: backend_api_port
+    value: 8080
+  - name: backend_agent_api_port
+    value: 8081
+  - name: backend_version
+    value: '6.0'

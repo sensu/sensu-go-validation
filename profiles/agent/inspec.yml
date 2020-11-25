@@ -1,0 +1,17 @@
+name: agent
+title: Sensu Agent
+maintainer: Sensu Inc.
+copyright: Sensu Inc.
+copyright_email: support@sensu.io
+license: Apache-2.0
+summary: Verify Sensu Agent is properly configured and functional
+version: 1.0.0
+supports:
+  - platform-family: linux
+inputs:
+  - name: agent_socket_port
+    value: 3030
+  - name: agent_api_port
+    value: 3031
+  - name: agent_version
+    value: '6.0'

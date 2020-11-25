@@ -1,0 +1,2 @@
+INSPEC_PASSWORD='user_password'
+PGPASSWORD='db_password'

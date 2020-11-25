@@ -1,0 +1,19 @@
+name: gateway
+title: Sensu Backend Gateway
+maintainer: Sensu Inc.
+copyright: Sensu Inc.
+copyright_email: support@sensu.io
+license: Apache-2.0
+summary: Verify Sensu Backend Gateway is properly configured and functional
+version: 1.0.0
+supports:
+  - platform-family: linux
+depends:
+  - name: backend
+    path: ../backend
+inputs:
+  - name: no-embed-etcd
+    value: ~
+    profile: backend
+  - name: federation
+    value: false

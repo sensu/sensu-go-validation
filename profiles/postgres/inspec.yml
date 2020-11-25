@@ -1,0 +1,17 @@
+name: postgres
+title: Sensu PostgreSQL
+maintainer: Sensu Inc.
+copyright: Sensu Inc.
+copyright_email: support@sensu.io
+license: Apache-2.0
+summary: Verify Sensu PostgreSQL is configured and functional
+version: 1.0.0
+supports:
+  - platform-family: linux
+inputs:
+  - name: postgres_port
+    value: 5432
+  - name: patroni_port
+    value: 8008
+  - name: number_patroni_nodes
+    value: 3
