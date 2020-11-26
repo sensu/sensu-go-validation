@@ -22,6 +22,7 @@ Gemfile.lock
 
 # inspec
 /*.yml
+!.travis.yml
 !tests.yml.example
 profiles/*.yml
 profiles/*/vendor

@@ -1,0 +1,42 @@
+services:
+  - docker
+language: ruby
+before_install:
+  - rm Gemfile.lock || true
+  - gem update bundler
+  - gem --version
+  - bundler -v
+  - 'if [ -n "$DOCKER_USERNAME" -a -n "$DOCKER_PASSWORD" ]; then echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin ; fi'
+stages:
+  - test
+  - build
+  - name: deploy
+    if: branch = main OR tag IS present
+jobs:
+  include:
+    - script: rake check
+      stage: test
+    - script: rake docker:build
+      stage: build
+      if: branch != main AND tag IS NOT present
+    - env: DOCKER_IMAGE_TAG=latest
+      script: rake docker:build
+      if: branch = main
+      stage: build
+    - env: DOCKER_IMAGE_TAG=$TRAVIS_TAG
+      script: make docker-build
+      if: tag IS present
+      stage: build
+    - env: DOCKER_DEPLOY=yes DOCKER_IMAGE_TAG=latest
+      stage: deploy
+      if: branch = main
+    - env: DOCKER_DEPLOY=yes DOCKER_IMAGE_TAG=$TRAVIS_TAG
+      stage: deploy
+      if: tag IS present
+deploy:
+  provider: script
+  script: rake docker:publish
+  on:
+    condition: "$DOCKER_DEPLOY = yes"
+notifications:
+  email: false
