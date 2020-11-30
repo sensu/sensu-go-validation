@@ -109,3 +109,30 @@ desc 'run single test'
 task :test, [:profile,:config,:inputs] do |t, args|
   Rake::Task["test:single"].invoke(args[:profile], args[:config], args[:inputs])
 end
+
+def docker_repo
+  ENV['DOCKER_REPO'] || 'sensu'
+end
+def docker_image_name
+  ENV['DOCKER_IMAGE_NAME'] || 'sensu-go-validation'
+end
+def docker_image_tag
+  # If ENV var not set, use current git branch name
+  tag = ENV['DOCKER_IMAGE_TAG'] || `git rev-parse --abbrev-ref HEAD`.gsub('/','-')
+  tag.strip
+end
+def docker_tag
+  "#{docker_repo}/#{docker_image_name}:#{docker_image_tag}"
+end
+
+namespace :docker do
+  desc 'build docker image'
+  task :build do |t, args|
+    sh "docker build -t #{docker_tag} ."
+  end
+
+  desc 'publish docker image'
+  task :publish do |t, args|
+    sh "docker push #{docker_tag}"
+  end
+end

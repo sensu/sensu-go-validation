@@ -129,5 +129,5 @@ docker run -it --rm -v $(pwd):/share sensu/sensu-go-validation
 # Build container:
 
 ```
-docker build -t sensu/sensu-go-validation .
+rake docker:build
 ```
