@@ -1,2 +1,2 @@
-INSPEC_PASSWORD='user_password'
-PGPASSWORD='db_password'
+export INSPEC_PASSWORD='user_password'
+export PGPASSWORD='db_password'
