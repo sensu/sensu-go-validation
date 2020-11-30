@@ -24,7 +24,7 @@ jobs:
       if: branch = main
       stage: build
     - env: DOCKER_IMAGE_TAG=$TRAVIS_TAG
-      script: make docker-build
+      script: rake docker:build
       if: tag IS present
       stage: build
     - env: DOCKER_DEPLOY=yes DOCKER_IMAGE_TAG=latest
