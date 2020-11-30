@@ -35,7 +35,7 @@ jobs:
       if: tag IS present
 deploy:
   provider: script
-  script: rake docker:publish
+  script: rake docker:build docker:publish
   on:
     condition: "$DOCKER_DEPLOY = yes"
     all_branches: true
